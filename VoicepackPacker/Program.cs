@@ -5,8 +5,9 @@ using System.IO.Compression;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
+using Newtonsoft.Json;
 using System.Reflection;
+using Newtonsoft.Json.Serialization;
 
 namespace VoicepackPacker
 {
@@ -18,10 +19,13 @@ namespace VoicepackPacker
 
         public static string path;
 
-        static JsonSerializerOptions options = new JsonSerializerOptions
+        static JsonSerializerSettings options = new JsonSerializerSettings
         {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = true
+            ContractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            },
+            Formatting = Formatting.Indented
         };
 
         static void Main(string[] args)
@@ -57,7 +61,7 @@ namespace VoicepackPacker
                 VoiceClips = Clip.allClips
             };
 
-            var json = JsonSerializer.Serialize(package, options);
+            var json = JsonConvert.SerializeObject(package, options);
 
             GenerateVoicepackFile(characterId, json);
 
