@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Reflection;
 
 namespace VoicepackPacker
 {
@@ -37,7 +38,7 @@ namespace VoicepackPacker
                 return;
             }
 
-            path = args[0];
+            path = GetRelativePath(args[0], AppDomain.CurrentDomain.BaseDirectory);
 #endif
             if (!ValidateInput()) return;
 

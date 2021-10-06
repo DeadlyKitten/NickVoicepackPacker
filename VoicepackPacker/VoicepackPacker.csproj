@@ -97,6 +97,6 @@
     <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>$(ProjectDir)/../packages/ILRepack.2.1.0-beta1/tools/ILRepack /out:$(TargetPath) $(TargetPath) $(TargetDir)System.Text.Json.dll $(TargetDir)Microsoft.Bcl.AsyncInterfaces.dll $(TargetDir)System.Runtime.CompilerServices.Unsafe.dll $(TargetDir)System.Text.Encodings.Web.dll $(TargetDir)System.Buffers.dll $(TargetDir)System.Memory.dll $(TargetDir)System.Numerics.Vectors.dll $(TargetDir)System.Threading.Tasks.Extensions.dll $(TargetDir)System.ValueTuple.dll</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)/../packages/ILRepack.2.1.0-beta1/tools/ILRepack /out:$(TargetPath) /internalize /allowdup:* $(TargetPath) $(TargetDir)System.Text.Json.dll $(TargetDir)Microsoft.Bcl.AsyncInterfaces.dll $(TargetDir)System.Runtime.CompilerServices.Unsafe.dll $(TargetDir)System.Text.Encodings.Web.dll $(TargetDir)System.Buffers.dll $(TargetDir)System.Memory.dll $(TargetDir)System.Numerics.Vectors.dll $(TargetDir)System.Threading.Tasks.Extensions.dll $(TargetDir)System.ValueTuple.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
