@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace VoicepackPacker
@@ -24,9 +26,22 @@ namespace VoicepackPacker
         public Clip(string id, string path, float volume = 1)
         {
             this.Id = id ?? $"Clip{allClips.Count() + 1}";
+
+            while(allClips.Any(x => x.Id == this.Id))
+            {
+                var rx = new Regex(@"/\d +$/", RegexOptions.RightToLeft);
+                var match = rx.Match(this.Id);
+                if (Int32.TryParse(match.Value, out var num))
+                {
+                    this.Id = this.Id.Substring(0, match.Index - 1) + (++num).ToString();
+                }
+                else
+                    this.Id = this.Id + "1";
+            }
+
             this.filePath = path;
             this.Volume = volume;
-            Path = $"clips/clip{allClips.Count() + 1}{System.IO.Path.GetExtension(filePath)}";
+            Path = $"clips/{this.Id}{System.IO.Path.GetExtension(path)}";
 
             ComputeHash();
 

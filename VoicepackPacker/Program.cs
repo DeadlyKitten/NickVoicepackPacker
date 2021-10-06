@@ -119,7 +119,7 @@ namespace VoicepackPacker
                         files.Add(directoryName, new List<string> { relativePath });
                     }
 
-                    new Clip(null, relativePath);
+                    new Clip(Path.GetFileNameWithoutExtension(file), relativePath);
                 }
             }
         }
