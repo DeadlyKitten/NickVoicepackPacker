@@ -15,6 +15,17 @@ Setting up a folder to create a voicepack is pretty easy, just do the following:
 - add folders to have an action randomly choose between them.
   - like loose files, folders should be named with the id of the action you'd like to trigger the sound.
   - names of audio files inside these folders doesn't matter.
+
+Folder structure
+```
+CharacterId (root folder)
+  ↳ MoveId1.wav
+    MoveId2.mp3
+    MoveId3 (folder)
+      ↳ clip1.ogg
+        clip2.ogg
+        clip3.wav 
+```
   
 ------
 
