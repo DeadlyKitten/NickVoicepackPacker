@@ -90,8 +90,17 @@ namespace VoicepackPacker
             }
 
             ZipFile.CreateFromDirectory(tempFolder, $"./{characterId}.voicepack");
+            ZipFile.CreateFromDirectory(tempFolder, $"./{characterId}.zip");
 
             Directory.Delete(Directory.GetParent(tempFolder).FullName, true);
+
+            Console.WriteLine("The Voicepack Packer has generated two files, a .voicepack and a .zip file.");
+            Console.WriteLine("If you don't want to change anything, please use the .voicepack file.");
+            Console.WriteLine("But if you want to manually edit anything in the generated file, you can extract the zip and modify it.");
+            Console.WriteLine("BUT PLEASE REMEMBER: if you end up publishing your voicepack anywhere, please rename it from .zip to .voicepack,");
+            Console.WriteLine("As this makes installation much more clear for the end user.");
+            Console.WriteLine("Press any key to continune...");
+            Console.ReadLine();
         }
 
         private static void ParseInputDirectory()

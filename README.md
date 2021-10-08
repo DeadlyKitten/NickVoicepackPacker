@@ -45,7 +45,9 @@ CharacterId (root folder)
   
   Nick Voicepack Packer generates a `.voicepack` file, which is simply a `.zip` file renamed to prevent end users extracting voice packs and installing them incorrectly.
 
-  If you'd like to manually edit anything inside of the packed file, rename it to `.zip` and extract, make your changes, zip it back up, and rename it back to `.voicepack`.
+  If you'd like to manually edit anything inside of the packed file, a `.zip` file also gets generated.
+
+  **PLEASE NOTE:** If you end up using the `.zip` to manually edit your voice pack, please rename it to `.voicepack` once you're done. This makes installation significantly more clear for the end user.
 
 
   This program generates the bare minimum of what the mod requires to function. If you have a basic knowledge of the JSON format, you can further customize your voicepack by making edits to the package.json in the output zip.
