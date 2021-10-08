@@ -81,7 +81,7 @@ namespace VoicepackPacker
             using (var writer = new StreamWriter(packageJsonPath))
                 writer.Write(json);
 
-            if (File.Exists($"./{characterId}.zip")) File.Delete($"./{characterId}.zip");
+            if (File.Exists($"./{characterId}.voicepack")) File.Delete($"./{characterId}.voicepack");
 
             Directory.CreateDirectory(Path.Combine(tempFolder, "clips"));
             foreach (var clip in Clip.allClips)
@@ -89,7 +89,7 @@ namespace VoicepackPacker
                 File.Copy(clip.filePath, Path.Combine(tempFolder, clip.Path), true);
             }
 
-            ZipFile.CreateFromDirectory(tempFolder, $"./{characterId}.zip");
+            ZipFile.CreateFromDirectory(tempFolder, $"./{characterId}.voicepack");
 
             Directory.Delete(Directory.GetParent(tempFolder).FullName, true);
         }
